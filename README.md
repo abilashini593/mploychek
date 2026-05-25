@@ -1,6 +1,6 @@
 # MPloyChek Background Verification Application
 
-This repository contains a full-stack application built for the MPloyChek Software Engineer Intern assessment.
+MPloyChek is a role-based background verification web application built using Angular and Node.js. The application demonstrates authentication, role-based access control, async API handling, XML-based dummy database integration, and admin user management features.
 
 ## Architecture
 
