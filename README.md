@@ -60,9 +60,9 @@ The project consists of two main parts:
 You can test the application using the following mock accounts stored in `backend/db.xml`:
 
 **Admin User**
-*   **User ID:** `admin1`
-*   **Password:** `admin123`
+*   **User ID:** `alex@admin.com`
+*   **Password:** `Admin@123`
 
 **General User**
-*   **User ID:** `user1`
-*   **Password:** `user123`
+*   **User ID:** `john@user.com`
+*   **Password:** `User@123`
