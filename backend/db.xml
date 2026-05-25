@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<database>
+  <users>
+    <user>
+      <id>1</id>
+      <userId>alex@admin.com</userId>
+      <password>Admin@123</password>
+      <role>Admin</role>
+      <name>Alex Morgan</name>
+      <email>alex@admin.com</email>
+    </user>
+    <user>
+      <id>2</id>
+      <userId>john@user.com</userId>
+      <password>User@123</password>
+      <role>General User</role>
+      <name>John Walker</name>
+      <email>john@user.com</email>
+    </user>
+  </users>
+  <records>
+    <record>
+      <id>101</id>
+      <userId>john@user.com</userId>
+      <type>Background Check</type>
+      <status>Completed</status>
+      <date>2026-05-20</date>
+    </record>
+    <record>
+      <id>102</id>
+      <userId>john@user.com</userId>
+      <type>Education Verification</type>
+      <status>Pending</status>
+      <date>2026-05-21</date>
+    </record>
+    <record>
+      <id>103</id>
+      <userId>alex@admin.com</userId>
+      <type>System Audit</type>
+      <status>Completed</status>
+      <date>2026-05-15</date>
+    </record>
+  </records>
+</database>

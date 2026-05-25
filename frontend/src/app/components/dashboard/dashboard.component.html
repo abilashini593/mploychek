@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+  <nav class="navbar glass-panel">
+    <div class="logo">
+      <div class="logo-icon-small">M</div>
+      <span>MPloyChek</span>
+    </div>
+    <div class="nav-actions">
+      <div class="user-info">
+        <div class="avatar">{{ user?.name?.charAt(0) }}</div>
+        <div class="details">
+          <span class="name">{{ user?.name }}</span>
+          <span class="role badge" [ngClass]="isAdmin ? 'badge-admin' : 'badge-user'">{{ user?.role }}</span>
+        </div>
+      </div>
+      <button class="btn btn-logout" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="header-section">
+      <h1>Welcome back, {{ user?.name }}</h1>
+      <p class="subtitle">Here is an overview of your background verification status.</p>
+    </div>
+
+    <!-- Records Section -->
+    <section class="card glass-panel fade-in">
+      <div class="card-header">
+        <h2>Verification Records</h2>
+        <div *ngIf="isLoadingRecords" class="spinner-container">
+          <span class="spinner"></span> <span class="loading-text">Loading records (simulating delay)...</span>
+        </div>
+      </div>
+      
+      <div class="error-message" *ngIf="recordsError">{{ recordsError }}</div>
+
+      <div class="table-responsive" *ngIf="!isLoadingRecords && !recordsError">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of records">
+              <td>#{{ record.id }}</td>
+              <td>{{ record.userId }}</td>
+              <td>{{ record.type }}</td>
+              <td>{{ record.date }}</td>
+              <td>
+                <span class="status-badge" [ngClass]="'status-' + record.status.toLowerCase()">
+                  {{ record.status }}
+                </span>
+              </td>
+            </tr>
+            <tr *ngIf="records.length === 0">
+              <td colspan="5" class="empty-state">No records found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Admin Section -->
+    <section class="card glass-panel fade-in delay-1" *ngIf="isAdmin">
+      <div class="card-header">
+        <h2>User Management (Admin Only)</h2>
+        <div *ngIf="isLoadingUsers" class="spinner-container">
+          <span class="spinner"></span> <span class="loading-text">Loading users...</span>
+        </div>
+      </div>
+
+      <div class="error-message" *ngIf="usersError">{{ usersError }}</div>
+
+      <div class="table-responsive" *ngIf="!isLoadingUsers && !usersError">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of users">
+              <td>{{ u.userId }}</td>
+              <td>{{ u.name }}</td>
+              <td>{{ u.email }}</td>
+              <td><span class="badge" [ngClass]="u.role === 'Admin' ? 'badge-admin' : 'badge-user'">{{ u.role }}</span></td>
+              <td>
+                <button 
+  class="btn btn-small"
+  [disabled]="false"
+  (click)="editUser(u)">
+  Edit
+              </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,68 @@
+<div class="login-container">
+  <div class="glass-panel login-box">
+    <div class="logo-container">
+      <div class="logo-icon">M</div>
+      <h2>MPloyChek</h2>
+      <p class="subtitle">Digital Background Verification</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="input-group">
+        <label for="userId">User ID</label>
+        <input 
+          type="text" 
+          id="userId" 
+          name="userId" 
+          [(ngModel)]="userId" 
+          placeholder="Enter your email"
+          required
+          [disabled]="isLoading"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          [(ngModel)]="password" 
+          placeholder="Enter password"
+          required
+          [disabled]="isLoading"
+        >
+      </div>
+
+      <div class="input-group">
+  <label for="role">Role</label>
+
+  <select
+    id="role"
+    name="role"
+    [(ngModel)]="role"
+    required
+    [disabled]="isLoading"
+  >
+    <option value="">Select Role</option>
+    <option value="Admin">Admin</option>
+    <option value="General User">General User</option>
+  </select>
+</div>
+
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <button type="submit" class="btn login-btn" [disabled]="isLoading || !loginForm.form.valid">
+        <span *ngIf="isLoading" class="spinner"></span>
+        <span *ngIf="!isLoading">Sign In</span>
+      </button>
+    </form>
+
+    <div class="hints">
+      <p><strong>Demo Accounts:</strong></p>
+      <p>Admin: alex@admin.com / Admin@123</p>
+      <p>User: john@user.com / User@123</p>
+    </div>
+  </div>
+</div>
